@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+{% block content %}
+<body class="index">
+    <ul>
+        {% for slide in slides %}
+            <li>{{slide['Caption']}}</li>
+        {% endfor %}
+    </ul>
+</body>
+{% endblock %}
