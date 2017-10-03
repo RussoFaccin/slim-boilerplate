@@ -4,6 +4,12 @@ use \Psr\Http\Message\ResponseInterface as Response;
 
 require 'vendor/autoload.php';
 
+// Environment variables
+$settings = require 'app/.env';
+
+// Session
+session_start();
+
 // Settings
 $settings = require 'app/settings.php';
 

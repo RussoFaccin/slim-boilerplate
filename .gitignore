@@ -1,2 +1,6 @@
+##### PHP Files #####
 vendor/*
 composer.phar
+
+##### Environment variables #####
+.env

@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% block content %}
+<body class="login">
+    <div class="message"><h4>{{message}}</h4></div>
+    <form action="" method="post">
+        <label for="fld_user">Usuário:</label>
+        <input type="text" name="fld_user">
+        <label for="fld_pass">Senha:</label>
+        <input type="text" name="fld_pass">
+        <input type="submit" value="Login">
+    </form>
+</body>
+{% endblock %}
