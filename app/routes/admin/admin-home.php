@@ -9,7 +9,7 @@ use \Psr\Http\Message\ResponseInterface as Response;
 $app->get('/admin', function (Request $request, Response $response) {
   
     // Check user authentication
-  if(!isset($_SESSION['jwt'])){
+  if(!isset($_SESSION['IS_LOGGED'])){
     $path = $this->router->pathFor('login');
     return $response->withStatus(401)->withHeader('Location', "$path");
   }

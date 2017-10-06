@@ -56,6 +56,8 @@ $app->post('/login', function (Request $request, Response $response) {
   $jwt_token = $jwt_header.".".$jwt_payload.".".$jwt_signature;
 
   $_SESSION['jwt'] = $jwt_token;
+  $_SESSION['IS_LOGGED'] = true;
+  $_SESSION['ACTIVE'] = time();
 
   $path = $this->router->pathFor('admin-home');
   return $response->withStatus(200)->withHeader('Location', "$path");
