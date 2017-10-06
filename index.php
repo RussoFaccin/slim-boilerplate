@@ -22,7 +22,6 @@ $app->add(function (Request $request, Response $response, $next){
         $_SESSION['ACTIVE'] = time();
     }else{
         $_SESSION['IS_LOGGED'] = false;
-        session_unset();
     }
     $response = $next($request, $response);
     return $response;

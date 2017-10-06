@@ -8,13 +8,11 @@ use \Psr\Http\Message\ResponseInterface as Response;
 
 $app->get('/', function (Request $request, Response $response) {
   
-  // PASSWORD
+  // PASSWORD - GENERATOR
   $raw_pass = "admin";
   $pass = password_hash($raw_pass, PASSWORD_DEFAULT);
-
-  print_r($pass);
   
-  // JWT
+  // JWT - GENERATOR
   $raw_header = array(
     'alg' => 'HS256',
     'typ' => 'JWT'
