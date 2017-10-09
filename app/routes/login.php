@@ -7,7 +7,7 @@ use \Psr\Http\Message\ResponseInterface as Response;
 ================================================== */
 
 $app->get('/login', function (Request $request, Response $response) {
-  $message = $_SESSION['flashMessage'];
+	$message = $this->flash_message->read();
   $response = $this->view->render($response, "login.html", ["message" => $message]);
   return $response;
 })->setName('login');
@@ -34,7 +34,9 @@ $app->post('/login', function (Request $request, Response $response) {
   $hash = $result[0]['user_pass'];
 
   if(!password_verify ( $pass , $hash )){
-    $_SESSION['flashMessage'] = "Verifique os campos Usuário e Senha";
+	  $this->flash_message->add("Verifique os campos Usuário e Senha");
+	// $flashMessage->add("Verifique os campos Usuário e Senha");
+    // $_SESSION['flashMessage'] = "Verifique os campos Usuário e Senha";
     $path = $this->router->pathFor('login');
     return $response->withStatus(401)->withHeader('Location', "$path");
   }
