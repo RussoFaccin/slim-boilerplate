@@ -7,11 +7,13 @@
         <link rel="stylesheet" href="{{ base_url() }}/static/css/core.css">
         <link rel="stylesheet" href="{{ base_url() }}/static/css/admin.css">
         <title>{{documentTitle}}</title>
-    </head>
-    
-    {{ include('inc/navigation.html') }}
-
-    {% block content %}
-    <script src="static/js/admin-scripts.js"></script>
-    {% endblock %}
+	</head>
+	<body class="{{bodyClass}}">
+		<div id="message-box">{{message}}</div>
+		{{ include('inc/navigation.html') }}
+		<div id="content">
+			{% block content %}{% endblock %}
+		</div>
+		<script src="static/js/admin-scripts.js"></script>
+	</body>
 </html>

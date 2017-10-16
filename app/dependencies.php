@@ -7,10 +7,15 @@ $container['flash_message'] = new FlashMessage();
 
 // PDO
 $container['db'] = function ($c) {
-    $db = $c['settings']['db'];
-    $dbh = new PDO("mysql:host=" . $db['host'] . ";dbname=" . $db['dbname'] . ";charset=UTF8", $db['user'], $db['pass']);
-    $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $dbh->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+	$db = $c['settings']['db'];
+	try{
+		$dbh = new PDO("mysql:host=" . $db['host'] . ";dbname=" . $db['dbname'] . ";charset=UTF8", $db['user'], $db['pass']);
+		$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		$dbh->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+	}
+	catch(PDOException $e) {
+		echo $e->getMessage();
+	}
     return $dbh;
 };
 

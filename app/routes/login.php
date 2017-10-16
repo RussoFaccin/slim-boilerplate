@@ -35,10 +35,11 @@ $app->post('/login', function (Request $request, Response $response) {
 
   if(!password_verify ( $pass , $hash )){
 	  $this->flash_message->add("Verifique os campos Usuário e Senha");
-	// $flashMessage->add("Verifique os campos Usuário e Senha");
-    // $_SESSION['flashMessage'] = "Verifique os campos Usuário e Senha";
     $path = $this->router->pathFor('login');
     return $response->withStatus(401)->withHeader('Location', "$path");
+  }else{
+	  $_SESSION['USERNAME'] = $user;
+	  $_SESSION['LAST_ACTIVITY'] = time();
   }
 
   ### JWT

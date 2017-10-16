@@ -19,17 +19,6 @@ $settings = require 'app/settings.php';
 // Instance
 $app = new \Slim\App($settings);
 
-// Session expiration middleware
-$app->add(function (Request $request, Response $response, $next){
-    if($_SESSION['IS_LOGGED'] == true && time() - $_SESSION['ACTIVE'] < getenv('SESSION_EXPIRATION')){
-        $_SESSION['ACTIVE'] = time();
-    }else{
-        $_SESSION['IS_LOGGED'] = false;
-    }
-    $response = $next($request, $response);
-    return $response;
-});
-
 // Redirect paths with a trailing slash to their non-trailing counterpart
 $app->add(function (Request $request, Response $response, callable $next) {
     $uri = $request->getUri();
