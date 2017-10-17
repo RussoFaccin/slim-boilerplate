@@ -37,6 +37,24 @@ $app->add(function (Request $request, Response $response, callable $next) {
     return $next($request, $response);
 });
 
+// Protected Routes - Middleware
+$app->add(function (Request $request, Response $response, callable $next){
+	$route = $request->getAttribute('route');
+	$name = $route->getName();
+
+	if(in_array($name, $this->protectedRoutes)){
+		// Check user authentication
+		if (!isset($_SESSION['USERNAME']) OR time() - $_SESSION['LAST_ACTIVITY'] > getenv('SESSION_EXPIRATION')) {
+			$_SESSION['USERNAME'] = NULL;
+			$path = $this->router->pathFor('login');
+			return $response->withStatus(401)->withHeader('Location', "$path");
+		}else{
+			$_SESSION['LAST_ACTIVITY'] = time();
+		}
+	}
+	return $next($request, $response);
+});
+
 // Dependencies
 require 'app/dependencies.php';
 

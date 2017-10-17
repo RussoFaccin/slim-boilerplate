@@ -1,10 +1,10 @@
-{% extends "layout.html" %}
+{% extends "admin/layout-admin.html" %}
 {% block content %}
-<form action="" method="post">
+<form action="" method="post" class="pure-form pure-form-stacked">
 	<label for="fld_user">Usuário:</label>
 	<input type="text" name="fld_user">
 	<label for="fld_pass">Senha:</label>
 	<input type="text" name="fld_pass">
-	<input type="submit" value="Login">
+	<input type="submit" value="Login" class="pure-button pure-button-primary">
 </form>
 {% endblock %}

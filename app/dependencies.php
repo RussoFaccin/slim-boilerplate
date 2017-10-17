@@ -34,3 +34,9 @@ $container['view'] = function ($container) {
 
     return $view;
 };
+
+// Protected Routes
+$container['protectedRoutes'] = array(
+	'admin-home',
+	'admin-portfolio'
+);

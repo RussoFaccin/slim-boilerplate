@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="{{ base_url() }}/static/css/core.css">
+		<link rel="stylesheet" href="{{ base_url() }}/static/css/admin.css">
+		<link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css">
+        <title>{{documentTitle}}</title>
+	</head>
+	<body class="{{bodyClass}}">
+		<div id="message-box">{{message}}</div>
+		{{ include('inc/navigation.html') }}
+		<div id="content">
+			{% block content %}{% endblock %}
+		</div>
+		<script src="static/js/admin-scripts.js"></script>
+	</body>
+</html>

@@ -10,7 +10,7 @@ require 'app/routes/home.php';
     LOGIN
 ============================================================ */
 
-require 'app/routes/login.php';
+require 'app/routes/admin/login.php';
 
 /* ============================================================
     ADMIN
